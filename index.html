@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Ação CX | Acesso — Q1 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e0e0e;
+  --ink2: #2a2a2a;
+  --muted: #666;
+  --light: #999;
+  --bg: #f5f3ef;
+  --white: #ffffff;
+  --border: #e0ddd8;
+  --border2: #ccc9c2;
+
+  --macro: #1a3a5c;
+  --macro-bg: #e8f0f8;
+  --macro-mid: #4a7ab5;
+
+  --bot: #2d5a27;
+  --bot-bg: #e6f2e4;
+  --bot-mid: #5a9e52;
+
+  --central: #6b2d00;
+  --central-bg: #fdf0e6;
+  --central-mid: #c4691a;
+
+  --triagem: #3d1a5c;
+  --triagem-bg: #f0e8f8;
+  --triagem-mid: #8a52c4;
+
+  --red: #b91c1c;
+  --red-bg: #fef2f2;
+  --gold: #92400e;
+  --gold-bg: #fffbeb;
+  --green: #14532d;
+  --green-bg: #f0fdf4;
+
+  --sidebar: 220px;
+  --r: 6px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar);
+  height: 100vh;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.sb-top {
+  padding: 24px 18px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.sb-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 8px;
+}
+
+.sb-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.sb-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.sb-stat {
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+.sb-stat-v {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.sb-stat-l {
+  font-size: 9px;
+  color: rgba(255,255,255,0.38);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+nav { padding: 12px 0; flex: 1; }
+
+.nav-group { margin-bottom: 4px; }
+
+.nav-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  padding: 10px 18px 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.48);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+
+.nav-item:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: white; font-weight: 500; border-left-color: white; background: rgba(255,255,255,0.06); }
+
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── MAIN ── */
+.main { margin-left: var(--sidebar); flex: 1; }
+
+.topbar {
+  position: sticky; top: 0;
+  background: rgba(245,243,239,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.topbar-left {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.topbar-right { display: flex; gap: 8px; align-items: center; }
+
+.badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.badge-macro { background: var(--macro-bg); color: var(--macro); border-color: #b3cde8; }
+.badge-bot { background: var(--bot-bg); color: var(--bot); border-color: #b3d9ae; }
+.badge-central { background: var(--central-bg); color: var(--central); border-color: #e8bfa0; }
+.badge-triagem { background: var(--triagem-bg); color: var(--triagem); border-color: #c9b3e8; }
+
+.content { padding: 48px 44px 80px; max-width: 920px; }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 52px;
+}
+
+.hero-left {
+  padding: 40px 36px;
+  position: relative;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 70%);
+}
+
+.hero-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 14px;
+}
+
+.hero-h {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+}
+
+.hero-right {
+  padding: 32px 28px;
+  background: rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hero-kpi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--r);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.hero-kpi-label { font-size: 11px; color: rgba(255,255,255,0.45); }
+.hero-kpi-val { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: white; }
+.hero-kpi-val.bad { color: #f87171; }
+.hero-kpi-val.good { color: #6ee7b7; }
+.hero-kpi-val.warn { color: #fcd34d; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 60px; scroll-margin-top: 60px; }
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.section-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+.tag-macro { background: var(--macro-bg); color: var(--macro); }
+.tag-bot { background: var(--bot-bg); color: var(--bot); }
+.tag-central { background: var(--central-bg); color: var(--central); }
+.tag-triagem { background: var(--triagem-bg); color: var(--triagem); }
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.section-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 720px;
+  margin-top: 6px;
+}
+
+/* ── ACTION CARD ── */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.action-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.action-card:hover { border-color: var(--border2); }
+
+.ac-header {
+  padding: 14px 18px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ac-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--light);
+}
+
+.ac-impact {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.impact-alto { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.impact-medio { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+.impact-baixo { background: #f0fdf4; color: #14532d; border: 1px solid #bbf7d0; }
+
+.ac-body { padding: 8px 18px 16px; }
+
+.ac-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.ac-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.ac-problema {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--light);
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 4px;
+  border-left: 2px solid var(--border2);
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.ac-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.ac-meta { font-size: 11px; color: var(--light); }
+
+.ac-prazo {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* ── FULL WIDTH CARD ── */
+.action-card-full {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+
+.acf-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.acf-left { display: flex; gap: 14px; align-items: flex-start; }
+
+.acf-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--border2);
+  line-height: 1;
+  min-width: 32px;
+}
+
+.acf-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.acf-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── TEMPLATE BLOCK ── */
+.template-block {
+  background: #fafaf9;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  margin: 14px 0;
+  overflow: hidden;
+}
+
+.tmpl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tmpl-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tmpl-toggle {
+  font-size: 11px;
+  color: var(--light);
+  transition: transform 0.2s;
+}
+
+.tmpl-toggle.open { transform: rotate(180deg); }
+
+.tmpl-body {
+  padding: 16px;
+  display: none;
+}
+
+.tmpl-body.open { display: block; }
+
+.tmpl-persona {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.persona-buyer { background: #fff4ef; color: #a03818; }
+.persona-creator { background: #f0fdf4; color: #14532d; }
+
+pre {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+pre em {
+  color: var(--light);
+  font-style: italic;
+}
+
+/* ── GAP TABLE ── */
+.gap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  margin: 16px 0;
+}
+
+.gap-table th {
+  background: var(--ink);
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  padding: 9px 14px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.gap-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  vertical-align: top;
+}
+
+.gap-table tr:hover td { background: #faf9f7; }
+.gap-table td:first-child { color: var(--ink); font-weight: 500; }
+
+.exists { color: var(--green); font-weight: 500; }
+.partial { color: var(--gold); font-weight: 500; }
+.gap { color: var(--red); font-weight: 500; }
+
+/* ── CALLOUT ── */
+.callout {
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.65;
+  border-left: 3px solid;
+}
+
+.callout-red { background: var(--red-bg); border-color: #dc2626; color: #7f1d1d; }
+.callout-gold { background: var(--gold-bg); border-color: #d97706; color: #78350f; }
+.callout-green { background: var(--green-bg); border-color: #16a34a; color: #14532d; }
+.callout-blue { background: #eff6ff; border-color: #3b82f6; color: #1e3a8a; }
+
+.callout strong { font-weight: 600; }
+
+/* ── PRIORITY TABLE ── */
+.priority-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 90px 90px 90px;
+  gap: 0;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+
+.priority-row:first-child { border-radius: var(--r) var(--r) 0 0; overflow: hidden; }
+.priority-row.header { background: var(--ink); }
+
+.pr-cell {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+
+.pr-cell.header-cell {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.pr-cell.name { color: var(--ink); font-weight: 500; font-size: 12.5px; }
+.pr-cell.center { justify-content: center; text-align: center; }
+
+.pr-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--border2);
+}
+
+.chip {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.chip-alto { background: #fef2f2; color: #b91c1c; }
+.chip-medio { background: #fffbeb; color: #92400e; }
+.chip-imediato { background: #f0fdf4; color: #14532d; }
+.chip-curto { background: #eff6ff; color: #1d4ed8; }
+.chip-medio-p { background: #faf5ff; color: #6b21a8; }
+
+.chip-macro { background: var(--macro-bg); color: var(--macro); }
+.chip-bot { background: var(--bot-bg); color: var(--bot); }
+.chip-central { background: var(--central-bg); color: var(--central); }
+.chip-triagem { background: var(--triagem-bg); color: var(--triagem); }
+
+.priority-table {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+/* SCROLL ANIM */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="sb-eyebrow">Plano de Ação CX</div>
+    <div class="sb-title">Access Friction<br>Q1 2026</div>
+    <div class="sb-stats">
+      <div class="sb-stat">
+        <div class="sb-stat-v">12</div>
+        <div class="sb-stat-l">ações mapeadas</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-stat-v">100%</div>
+        <div class="sb-stat-l">controle CX</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-stat-v">48%</div>
+        <div class="sb-stat-l">det. Buyers atual</div>
+      </div>
+      <div class="sb-stat">
+        <div class="sb-stat-v">11%</div>
+        <div class="sb-stat-l">det. Creators atual</div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-group">
+      <div class="nav-group-label">Contexto</div>
+      <a class="nav-item active" href="#overview"><div class="nav-dot" style="background:#888"></div>Visão geral</a>
+      <a class="nav-item" href="#gaps"><div class="nav-dot" style="background:#888"></div>Gaps na Central de Ajuda</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Ações</div>
+      <a class="nav-item" href="#macros"><div class="nav-dot" style="background:#4a7ab5"></div>Macros de atendimento</a>
+      <a class="nav-item" href="#triagem"><div class="nav-dot" style="background:#8a52c4"></div>Triagem & protocolo</a>
+      <a class="nav-item" href="#bot"><div class="nav-dot" style="background:#5a9e52"></div>Bot (ClaudIA / CAIO)</a>
+      <a class="nav-item" href="#central"><div class="nav-dot" style="background:#c4691a"></div>Central de Ajuda</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Síntese</div>
+      <a class="nav-item" href="#prioridade"><div class="nav-dot" style="background:#888"></div>Priorização</a>
+      <a class="nav-item" href="#metricas"><div class="nav-dot" style="background:#888"></div>Métricas de acompanhamento</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">Plano de Ação CX · Access Friction · Q1 2026</div>
+    <div class="topbar-right">
+      <span class="badge badge-macro">Macros</span>
+      <span class="badge badge-triagem">Triagem</span>
+      <span class="badge badge-bot">Bot</span>
+      <span class="badge badge-central">Central de Ajuda</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <div class="hero reveal">
+      <div class="hero-left">
+        <div class="hero-eyebrow">CX · Sem dependência de produto</div>
+        <h1 class="hero-h">12 ações para deflexão e melhoria de CSAT</h1>
+        <p class="hero-sub">Todas as oportunidades mapeadas a partir da leitura real dos tickets — sem depender de desenvolvimento de produto. Foco em macros, triagem, bot e Central de Ajuda.</p>
+        <a href="https://adriellycosta-rgb.github.io/Plano-CX-Acesso/voc.html#overview" target="_blank" style="display:inline-block;margin-top:24px;padding:10px 20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);border-radius:6px;color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Ver análise detalhada dos tickets (VOC) →</a>
+      </div>
+      <div class="hero-right">
+        <div class="hero-kpi">
+          <span class="hero-kpi-label">Det. Buyers hoje</span>
+          <span class="hero-kpi-val bad">48,1%</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-label">Det. Buyers — meta</span>
+          <span class="hero-kpi-val warn">~30%</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-label">CSAT Buyers hoje</span>
+          <span class="hero-kpi-val bad">2,94</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-label">Escalação N2 Buyers</span>
+          <span class="hero-kpi-val bad">13,6%</span>
+        </div>
+        <div class="hero-kpi">
+          <span class="hero-kpi-label">CSAT Creators hoje</span>
+          <span class="hero-kpi-val good">4,33</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="section reveal" id="overview">
+      <div class="section-head">
+        <h2 class="section-title">Por que o atendimento falha — e o que CX pode resolver</h2>
+      </div>
+      <p class="section-desc">A leitura dos tickets identificou quatro causas raiz de insatisfação que estão dentro do controle de CX. Nenhuma delas exige mudança de produto.</p>
+
+      <div class="action-grid">
+        <div class="action-card-full" style="border-left: 3px solid #b91c1c;">
+          <div class="acf-header">
+            <div class="acf-left">
+              <div class="acf-num" style="color:#fca5a5">01</div>
+              <div>
+                <div class="acf-title">Diagnóstico ausente antes da solução</div>
+                <div class="acf-desc">Agentes enviam macros de cache, reenvio de acesso e redirecionamento ao produtor sem investigar o problema. Em 20,7% dos tickets de Buyers, o primeiro passo é pedir dados (número HP) antes de qualquer tentativa de entender o contexto.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="action-card-full" style="border-left: 3px solid #d97706;">
+          <div class="acf-header">
+            <div class="acf-left">
+              <div class="acf-num" style="color:#fcd34d">02</div>
+              <div>
+                <div class="acf-title">Macros não consideram perfil do cliente</div>
+                <div class="acf-desc">Clientes com baixo letramento digital (que não sabem o que é número HP, não conseguem limpar cache, não entendem termos técnicos) recebem as mesmas respostas que usuários avançados. Isso gera ciclos de 20–34 mensagens sem resolução.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="action-card-full" style="border-left: 3px solid #7c3aed;">
+          <div class="acf-header">
+            <div class="acf-left">
+              <div class="acf-num" style="color:#c4b5fd">03</div>
+              <div>
+                <div class="acf-title">Redirecionamento ao produtor sem verificação</div>
+                <div class="acf-desc">Em 29,3% dos tickets de Buyers, o agente redireciona ao produtor — inclusive quando o cliente já relatou que o e-mail do produtor não existe ou não responde. A macro não tem critério de exceção para esse cenário.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="action-card-full" style="border-left: 3px solid #059669;">
+          <div class="acf-header">
+            <div class="acf-left">
+              <div class="acf-num" style="color:#6ee7b7">04</div>
+              <div>
+                <div class="acf-title">Central de Ajuda não alinha com as dúvidas reais</div>
+                <div class="acf-desc">Os artigos existem, mas os agentes não os enviam de forma contextualizada — e o bot os envia de forma genérica. O artigo de 2FA, por exemplo, existe e é detalhado, mas 61% dos Buyers que acionam 2FA viram detratores. O problema é de ativação, não de ausência de conteúdo.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAPS CENTRAL DE AJUDA -->
+    <section class="section reveal" id="gaps">
+      <div class="section-head">
+        <span class="section-tag tag-central">Central de Ajuda</span>
+        <h2 class="section-title">Diagnóstico — o que existe e o que falta</h2>
+      </div>
+      <p class="section-desc">Cruzamento entre os temas mais frequentes nos tickets e o conteúdo disponível na Central de Ajuda da Hotmart.</p>
+
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th>Tema do ticket</th>
+            <th>Volume / impacto</th>
+            <th>Artigo na Central</th>
+            <th>Status</th>
+            <th>Gap identificado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Senha — não lembro / não recebo link</td>
+            <td>34,8% Buyers · 44% det.</td>
+            <td>Existe (Como alterar senha)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Não cobre o cenário "e-mail cadastrado errado" — o mais comum nos tickets</td>
+          </tr>
+          <tr>
+            <td>2FA — não consigo acessar</td>
+            <td>1,5% Buyers · 61% det.</td>
+            <td>Existe (Por que recebo códigos)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Não cobre perda de acesso ao autenticador / como desativar 2FA em emergência</td>
+          </tr>
+          <tr>
+            <td>App não funciona / não loga</td>
+            <td>Recorrente · alto NPS negativo</td>
+            <td>Existe (Como acessar pelo app)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Não cobre perfil de baixo letramento digital; usa linguagem técnica; não tem caminho sem número HP</td>
+          </tr>
+          <tr>
+            <td>Produto não aparece na conta</td>
+            <td>Alto volume · ciclos longos</td>
+            <td>Existe (Como acessar produto comprado)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Não instrui o cliente a verificar e-mail usado na compra vs e-mail de login de forma visual/simples</td>
+          </tr>
+          <tr>
+            <td>Conta bloqueada por múltiplas tentativas</td>
+            <td>7,9% Buyers · 40% det.</td>
+            <td>Existe (Motivos de bloqueio)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Artigo explica os motivos mas não dá o passo a passo de desbloqueio — cliente precisa do suporte para isso</td>
+          </tr>
+          <tr>
+            <td>Acesso após limpeza de cache (problema persiste)</td>
+            <td>38% retornam após orientação</td>
+            <td>Existe (Como limpar cache)</td>
+            <td><span class="partial">Parcial</span></td>
+            <td>Não há artigo com "e se limpar o cache não resolveu" — próximo passo não está documentado</td>
+          </tr>
+          <tr>
+            <td>Como localizar número da transação (HP)</td>
+            <td>Barreira inicial em 20% dos Buyers</td>
+            <td><strong>Não existe</strong></td>
+            <td><span class="gap">Gap</span></td>
+            <td>Artigo específico sobre como encontrar o número HP sem conta acessível seria deflexor direto</td>
+          </tr>
+          <tr>
+            <td>Produtor não responde / e-mail inválido</td>
+            <td>29% dos Buyers recebem redirect</td>
+            <td><strong>Não existe</strong></td>
+            <td><span class="gap">Gap</span></td>
+            <td>Nenhum artigo orienta o Buyer sobre o que fazer quando o canal do produtor não funciona</td>
+          </tr>
+          <tr>
+            <td>Acesso bloqueado após pagamento confirmado</td>
+            <td>Casos críticos · CSAT 1</td>
+            <td><strong>Não existe</strong></td>
+            <td><span class="gap">Gap</span></td>
+            <td>Nenhum artigo de autoatendimento para o cenário "paguei e não tenho acesso"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-gold">
+        <strong>Conclusão do diagnóstico:</strong> a Central de Ajuda tem boa cobertura de cenários padrão, mas não endereça os cenários de exceção — que são exatamente os que geram mais insatisfação. Os três maiores gaps (número HP, produtor que não responde, pagamento confirmado sem acesso) não têm nenhum conteúdo de autoatendimento.
+      </div>
+    </section>
+
+    <!-- MACROS -->
+    <section class="section reveal" id="macros">
+      <div class="section-head">
+        <span class="section-tag tag-macro">Macros</span>
+        <h2 class="section-title">Revisão de macros de atendimento</h2>
+      </div>
+      <p class="section-desc">As macros atuais funcionam como respostas únicas para todos os perfis. As propostas abaixo criam ramificações baseadas em contexto — o que o cliente já informou, qual canal tentou, qual o tipo de erro.</p>
+
+      <!-- MACRO 1 -->
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">M1</div>
+            <div>
+              <div class="acf-title">Macro de identificação — sem exigir número HP como primeiro passo</div>
+              <div class="acf-desc">Substituir a solicitação de número HP como triagem inicial por um caminho alternativo via CPF + nome do produto + e-mail. O número HP continua sendo solicitado, mas como segunda opção — não como barreira de entrada.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Impacto alto</span>
+        </div>
+        <div class="ac-problema">📌 Problema nos tickets: cliente não sabe o que é número HP → responde com dados parciais → agente pede HP de novo → ciclo de 3-4 interações antes do diagnóstico. Ticket #9994022 chegou a 34 mensagens por esse motivo.</div>
+
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Proposta de macro — Identificação inicial (Buyer)</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <span class="tmpl-persona persona-buyer">Buyer</span>
+            <pre>Oi, [Nome]! Tudo bem? 🧡
+
+Sou [Nome do agente] e estou aqui para te ajudar.
+
+Para localizar sua conta e resolver isso rápido, me informe:
+
+<strong>— Nome do produto que você comprou</strong>
+<strong>— E-mail que usou na compra</strong>
+<strong>— CPF</strong>
+
+<em>(Se você tiver o número da transação — começa com HP seguido de números — pode enviar também. Mas não se preocupe se não tiver!)</em>
+
+Aguardo seu retorno! 😊</pre>
+          </div>
+        </div>
+
+        <div class="ac-footer">
+          <span class="ac-meta">Afeta: ~20% dos tickets de Buyers · Reduz interações iniciais</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+
+      <!-- MACRO 2 -->
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">M2</div>
+            <div>
+              <div class="acf-title">Macro de 2FA — com ramificação por tipo de problema</div>
+              <div class="acf-desc">O 2FA tem 61,1% de detratores em Buyers. A macro atual não distingue os três cenários: (a) não recebi o código, (b) perdi acesso ao autenticador, (c) não sei o que é 2FA. Cada cenário tem solução diferente.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Impacto alto</span>
+        </div>
+        <div class="ac-problema">📌 Problema nos tickets: agente envia orientação de verificar spam + limpar cache para cliente que perdeu acesso ao aplicativo autenticador. São problemas distintos com soluções totalmente diferentes.</div>
+
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Macro de triagem — 2FA (Buyer)</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <span class="tmpl-persona persona-buyer">Buyer</span>
+            <pre>Oi, [Nome]! Vou te ajudar com o acesso agora. 🧡
+
+Para resolver mais rápido, me conta: qual desses cenários é o seu caso?
+
+<strong>A)</strong> Estou recebendo um código por e-mail, mas o código não funciona ou não chega
+<strong>B)</strong> Preciso de um código do aplicativo autenticador (Google Authenticator, Authy...) mas não tenho mais acesso ao app
+<strong>C)</strong> Não sei o que é esse código de verificação — só quero entrar na minha conta
+
+Me diz qual é e já te ajudo! 😊</pre>
+          </div>
+        </div>
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Resposta para cenário B — perda do autenticador</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <span class="tmpl-persona persona-buyer">Buyer — Cenário B</span>
+            <pre>Entendido, [Nome]! Vou acionar nossa equipe especializada para desativar o autenticador da sua conta.
+
+Para isso, preciso confirmar sua identidade. Por gentileza, me envie:
+
+<strong>— CPF</strong>
+<strong>— E-mail cadastrado na conta</strong>
+<strong>— Um comprovante de que é você</strong> (pode ser um print do e-mail de confirmação de qualquer compra)
+
+Assim que confirmar, resolvo isso para você. ⏱️</pre>
+          </div>
+        </div>
+
+        <div class="ac-footer">
+          <span class="ac-meta">Afeta: 2FA · 61% detratores Buyers · Subcategoria mais crítica</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+
+      <!-- MACRO 3 -->
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">M3</div>
+            <div>
+              <div class="acf-title">Macro de cache — com critério de uso e próximo passo explícito</div>
+              <div class="acf-desc">A orientação de cache deve ter uma condição de uso e, obrigatoriamente, um "e se não resolver" já embutido. Hoje, 38,2% dos Creators retornam com o problema aberto após receber a orientação de cache — sem saber qual é o próximo passo.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-medio">Impacto médio</span>
+        </div>
+        <div class="ac-problema">📌 Problema nos tickets: agente envia cache → cliente volta com problema persistente → agente envia cache de novo → escalação tardia. 3,6 interações adicionais em média após a primeira orientação de cache.</div>
+
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Macro de cache com próximo passo</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <span class="tmpl-persona persona-buyer">Buyer / Creator</span>
+            <pre>Oi, [Nome]! Vamos resolver isso. 🧡
+
+O que está acontecendo pode estar relacionado a dados temporários salvos no seu navegador. Tenta limpar o cache seguindo o passo a passo do seu dispositivo:
+
+<strong>📎 Link direto:</strong> [inserir link do artigo de cache da Central de Ajuda]
+
+Depois de limpar, acessa novamente em uma aba anônima e tenta fazer o login.
+
+<strong>⚠️ Se o problema continuar após limpar o cache:</strong> me manda uma foto da tela de erro e me conta em qual dispositivo está tentando acessar (celular ou computador, e qual navegador). Assim consigo analisar melhor e já te encaminho para a solução certa.</pre>
+          </div>
+        </div>
+
+        <div class="ac-footer">
+          <span class="ac-meta">Afeta: 24% dos tickets Creators · 10,6% Buyers · Reduz ciclos de retorno</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+
+      <!-- MACRO 4 -->
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">M4</div>
+            <div>
+              <div class="acf-title">Macro de redirecionamento ao produtor — com verificação prévia</div>
+              <div class="acf-desc">A macro atual redireciona o cliente ao produtor independentemente do contexto. Deve ter uma condição: se o cliente já reportou tentativa frustrada de contato com o produtor, o fluxo deve escalar direto.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Impacto alto</span>
+        </div>
+        <div class="ac-problema">📌 Problema nos tickets: ticket #10001267 — cliente informou que o e-mail de suporte do produtor retornou "domínio não existe". Agente reiterou o redirecionamento ao produtor. CSAT 1.</div>
+
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Macro de redirect — com verificação de canal (Buyer)</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <span class="tmpl-persona persona-buyer">Buyer</span>
+            <pre><em>[Usar esta macro APENAS quando o cliente ainda não tentou contato com o produtor]</em>
+
+Oi, [Nome]! 🧡
+
+Esse tipo de configuração é definida diretamente pelo criador do produto, então o caminho mais rápido é entrar em contato com o suporte dele.
+
+O canal de atendimento do produtor é: <strong>[inserir canal]</strong>
+
+Se você já tentou contato por esse canal e não obteve resposta, me avisa que eu aciono nossa equipe para te ajudar de outra forma, tá bem?
+
+---
+
+<em>[Usar esta macro quando o cliente JÁ relatou tentativa frustrada com o produtor]</em>
+
+Oi, [Nome]! Entendido, se o canal do produtor não está funcionando, vou registrar isso aqui e acionar nossa equipe especializada para verificar o que pode ser feito diretamente pela Hotmart.
+
+Enquanto isso, me confirma: [dados necessários para escalação]</pre>
+          </div>
+        </div>
+
+        <div class="ac-footer">
+          <span class="ac-meta">Afeta: 29,3% tickets Buyers · Canal produtor inativo é causa de CSAT 1</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRIAGEM -->
+    <section class="section reveal" id="triagem">
+      <div class="section-head">
+        <span class="section-tag tag-triagem">Triagem & Protocolo</span>
+        <h2 class="section-title">Critérios de triagem e protocolo de escalação</h2>
+      </div>
+      <p class="section-desc">Mudanças no protocolo de atendimento que não dependem de sistema — dependem de critério e treinamento.</p>
+
+      <div class="action-grid">
+        <div class="action-card">
+          <div class="ac-header">
+            <span class="ac-num">T1</span>
+            <span class="ac-impact impact-alto">Impacto alto</span>
+          </div>
+          <div class="ac-body">
+            <div class="ac-title">Escalação automática após 2 orientações sem resolução</div>
+            <div class="ac-desc">Hoje o agente pode enviar a mesma orientação várias vezes sem critério de escalação. Definir: se o cliente retorna relatando que o problema persiste após 2 tentativas de solução, o ticket deve ser escalado para N2 sem nova tentativa de N1.</div>
+            <div class="ac-problema">Contexto: em Buyers, 46,9% dos tickets têm sinal de não resolução. Média de 5 interações por ticket.</div>
+            <div class="ac-footer">
+              <span class="ac-meta">Reduz ciclos e escalação tardia</span>
+              <span class="ac-prazo">Curto prazo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="ac-header">
+            <span class="ac-num">T2</span>
+            <span class="ac-impact impact-alto">Impacto alto</span>
+          </div>
+          <div class="ac-body">
+            <div class="ac-title">Identificar perfil de letramento digital no início do atendimento</div>
+            <div class="ac-desc">Se o cliente demonstrar não conhecer termos como "número HP", "cache", "aba anônima" ou "número de transação", o agente deve adotar linguagem simplificada e não solicitar essas informações como triagem primária.</div>
+            <div class="ac-problema">Contexto: ticket #9994022 — 34 mensagens geradas por incompatibilidade de linguagem, não por complexidade técnica real do problema.</div>
+            <div class="ac-footer">
+              <span class="ac-meta">Reduz ciclos de Buyers com baixo letramento</span>
+              <span class="ac-prazo">Treinamento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="ac-header">
+            <span class="ac-num">T3</span>
+            <span class="ac-impact impact-medio">Impacto médio</span>
+          </div>
+          <div class="ac-body">
+            <div class="ac-title">Checklist de pré-triagem antes de enviar cache</div>
+            <div class="ac-desc">Antes de enviar a macro de cache, verificar: (1) o cliente está no app ou no navegador? (2) qual o erro exato? (3) o problema é de login ou de exibição de conteúdo? Cada resposta leva a um caminho diferente.</div>
+            <div class="ac-problema">Contexto: cache é aplicado em 10-24% dos tickets mas não é a solução correta para todos eles — especialmente quando o problema está no app.</div>
+            <div class="ac-footer">
+              <span class="ac-meta">Reduz back-and-forth pós-cache</span>
+              <span class="ac-prazo">Curto prazo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-card">
+          <div class="ac-header">
+            <span class="ac-num">T4</span>
+            <span class="ac-impact impact-medio">Impacto médio</span>
+          </div>
+          <div class="ac-body">
+            <div class="ac-title">Criar critério explícito para acionar N2 em 2FA de Buyers</div>
+            <div class="ac-desc">2FA tem 61% de detratores em Buyers e 8,6% de escalação geral para N2. O caso de perda de acesso ao autenticador não pode ser resolvido por N1 — deve ir direto para N2. Definir esse critério formalmente evita tentativas frustradas em N1.</div>
+            <div class="ac-problema">Contexto: agentes tentam orientar redefinição de senha para clientes que perderam o autenticador — são soluções incompatíveis.</div>
+            <div class="ac-footer">
+              <span class="ac-meta">Reduz detratores de 2FA</span>
+              <span class="ac-prazo">Curto prazo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOT -->
+    <section class="section reveal" id="bot">
+      <div class="section-head">
+        <span class="section-tag tag-bot">Bot</span>
+        <h2 class="section-title">Melhorias no bot (ClaudIA / CAIO)</h2>
+      </div>
+      <p class="section-desc">O bot está presente em 25-46% dos tickets. Não é fator negativo isolado, mas erros pontuais comprometem de forma desproporcional a percepção de qualidade.</p>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">B1</div>
+            <div>
+              <div class="acf-title">Corrigir lógica de idioma do CAIO — erro crítico identificado</div>
+              <div class="acf-desc">O bot CAIO respondeu em inglês a um Creator que interagiu em português. Ao ser corrigido, negou o erro afirmando que "todas as minhas respostas já são em português". CSAT 1. O problema é de detecção de idioma na lógica do bot, não na base de conteúdo.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Impacto alto</span>
+        </div>
+        <div class="ac-problema">📌 Evidência direta: ticket #10002005. O atendimento humano posterior foi adequado, mas a nota já havia sido comprometida. Erros de bot são difíceis de recuperar na mesma interação.</div>
+        <div class="ac-footer">
+          <span class="ac-meta">Ação: revisão da lógica de detecção de idioma + teste antes de deploy</span>
+          <span class="ac-prazo">Urgente</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">B2</div>
+            <div>
+              <div class="acf-title">Bot não deve encerrar ticket sem confirmação de resolução</div>
+              <div class="acf-desc">A ClaudIA fecha tickets com "Resolved by ClaudIA" após enviar um link de artigo ou orientação genérica — sem confirmar com o cliente se o problema foi resolvido. Isso mascara a taxa de não resolução e gera re-abertura sem histórico completo.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-medio">Impacto médio</span>
+        </div>
+        <div class="ac-problema">📌 Padrão identificado: bot envia link de acesso → fecha ticket → cliente abre novo ticket com o mesmo problema. O histórico se perde e o agente humano começa do zero.</div>
+
+        <div class="template-block">
+          <div class="tmpl-header" onclick="toggleTemplate(this)">
+            <div class="tmpl-label">📝 Proposta de mensagem de confirmação antes de encerrar</div>
+            <span class="tmpl-toggle">▼</span>
+          </div>
+          <div class="tmpl-body">
+            <pre>Consegui te ajudar? 😊
+
+<strong>👍 Sim, resolveu!</strong> — pode fechar esse atendimento
+<strong>👎 Não, ainda preciso de ajuda</strong> — vou te conectar com um especialista
+
+<em>[Se 👎: manter ticket aberto e encaminhar para fila humana com contexto completo da interação]</em></pre>
+          </div>
+        </div>
+
+        <div class="ac-footer">
+          <span class="ac-meta">Reduz reabertura de tickets e perda de contexto</span>
+          <span class="ac-prazo">Curto prazo</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">B3</div>
+            <div>
+              <div class="acf-title">Bot deve detectar perfil Creator vs Buyer antes de enviar resposta</div>
+              <div class="acf-desc">O bot responde igual para Creators e Buyers em alguns cenários — especialmente em temas de acesso. Um Creator que reporta que um aluno não consegue acessar precisa de uma resposta diferente de um Buyer que não consegue acessar o próprio produto.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-medio">Impacto médio</span>
+        </div>
+        <div class="ac-problema">📌 Ticket #9999220: bot respondeu ao Creator como se fosse afiliado, não produtor. Agente humano corrigiu e resolveu em 1 resposta → CSAT 5. O problema foi do bot.</div>
+        <div class="ac-footer">
+          <span class="ac-meta">Reduz erros de persona no bot</span>
+          <span class="ac-prazo">Curto prazo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENTRAL DE AJUDA -->
+    <section class="section reveal" id="central">
+      <div class="section-head">
+        <span class="section-tag tag-central">Central de Ajuda</span>
+        <h2 class="section-title">Criação e atualização de artigos</h2>
+      </div>
+      <p class="section-desc">Três artigos novos e dois artigos para atualização — todos baseados em gaps reais identificados nos tickets. Foco em deflexão: cliente resolve sozinho sem acionar suporte.</p>
+
+      <div class="callout callout-blue">
+        <strong>Princípio dos novos artigos:</strong> linguagem simples, sem termos técnicos, com print de tela sempre que possível, e com o "e se não resolver" sempre presente no final. Artigos que terminam sem alternativa forçam o cliente a abrir ticket.
+      </div>
+
+      <div class="action-card-full" style="margin-top: 20px;">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">C1</div>
+            <div>
+              <div class="acf-title">🆕 CRIAR — "Onde encontro o número da minha compra (código HP)?"</div>
+              <div class="acf-desc">Artigo simples com print mostrando onde o número HP aparece: no e-mail de confirmação de compra, na área "Minhas Compras" da plataforma, e no extrato do cartão/PIX. Deve incluir o que fazer se não encontrar em nenhum lugar.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Deflexão direta</span>
+        </div>
+        <div class="ac-problema">📌 Impacto esperado: eliminar a primeira barreira de 20,7% dos tickets de Buyers. Clientes que não sabem localizar o HP geram ciclos de triagem antes de qualquer atendimento real.</div>
+        <div class="ac-footer">
+          <span class="ac-meta">Deflexão estimada: 15-20% dos tickets de identificação inicial</span>
+          <span class="ac-prazo">Curto prazo</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">C2</div>
+            <div>
+              <div class="acf-title">🆕 CRIAR — "Paguei e não consigo acessar meu produto"</div>
+              <div class="acf-desc">Artigo de autoatendimento para o cenário mais frustrante: pagamento confirmado, acesso bloqueado ou inexistente. Deve cobrir: (1) verificar e-mail de login vs e-mail de compra, (2) verificar status da transação, (3) reenvio de acesso pelo próprio portal, (4) o que fazer se o acesso continuar bloqueado.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Deflexão direta</span>
+        </div>
+        <div class="ac-problema">📌 Hoje não existe nenhum artigo para esse cenário. O cliente que paga e não acessa abre ticket com nível de frustração já elevado — um artigo de autoatendimento muda o estado emocional antes do contato.</div>
+        <div class="ac-footer">
+          <span class="ac-meta">Reduz tickets de bloqueio pós-pagamento · Casos de maior frustração</span>
+          <span class="ac-prazo">Curto prazo</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">C3</div>
+            <div>
+              <div class="acf-title">🆕 CRIAR — "O produtor não responde / o e-mail de suporte não funciona"</div>
+              <div class="acf-desc">Artigo orientando o Buyer sobre os canais que a Hotmart disponibiliza quando o produtor não responde, inclusive como formalizar uma reclamação. Hoje o cliente não tem clareza sobre o que a Hotmart pode fazer além de redirecionar — o artigo reduz a sensação de abandono.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-medio">Impacto médio</span>
+        </div>
+        <div class="ac-footer">
+          <span class="ac-meta">Afeta: 29,3% dos tickets de Buyers que recebem redirect</span>
+          <span class="ac-prazo">Médio prazo</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">C4</div>
+            <div>
+              <div class="acf-title">✏️ ATUALIZAR — Artigo de 2FA: adicionar seção "Perdi acesso ao meu autenticador"</div>
+              <div class="acf-desc">O artigo atual cobre bem o funcionamento do 2FA, mas não tem um caminho claro para o cenário de perda de acesso ao aplicativo autenticador. Adicionar seção com instrução de como solicitar desativação de 2FA via suporte, incluindo quais documentos são necessários para verificação de identidade.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-alto">Impacto alto</span>
+        </div>
+        <div class="ac-footer">
+          <span class="ac-meta">2FA tem 61% de detratores em Buyers · Maior taxa de todas as subcategorias</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+
+      <div class="action-card-full">
+        <div class="acf-header">
+          <div class="acf-left">
+            <div class="acf-num">C5</div>
+            <div>
+              <div class="acf-title">✏️ ATUALIZAR — Artigo de bloqueio: adicionar passo a passo de desbloqueio self-service</div>
+              <div class="acf-desc">O artigo "Por quais motivos minha conta pode ser bloqueada" explica as causas mas não dá o passo a passo do desbloqueio. Para bloqueio por múltiplas tentativas (o mais comum), o desbloqueio é feito via redefinição de senha — isso deve estar explícito e linkado diretamente no artigo.</div>
+            </div>
+          </div>
+          <span class="ac-impact impact-medio">Impacto médio</span>
+        </div>
+        <div class="ac-footer">
+          <span class="ac-meta">Conta bloqueada: 7,9% dos Buyers · 40,2% detratores</span>
+          <span class="ac-prazo">Imediato</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIORIZAÇÃO -->
+    <section class="section reveal" id="prioridade">
+      <div class="section-head">
+        <h2 class="section-title">Priorização das 12 ações</h2>
+      </div>
+      <p class="section-desc">Ordenado por impacto estimado em CSAT e deflexão, considerando esforço de implementação.</p>
+
+      <div class="priority-table">
+        <div class="priority-row header">
+          <div class="pr-cell header-cell">#</div>
+          <div class="pr-cell header-cell">Ação</div>
+          <div class="pr-cell header-cell center">Tipo</div>
+          <div class="pr-cell header-cell center">Impacto</div>
+          <div class="pr-cell header-cell center">Prazo</div>
+        </div>
+
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">1</span></div>
+          <div class="pr-cell name">M4 — Macro redirecionamento ao produtor com verificação</div>
+          <div class="pr-cell center"><span class="chip chip-macro">Macro</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">2</span></div>
+          <div class="pr-cell name">M2 — Macro 2FA com ramificação por tipo de problema</div>
+          <div class="pr-cell center"><span class="chip chip-macro">Macro</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">3</span></div>
+          <div class="pr-cell name">M1 — Macro de identificação sem exigir HP como primeiro passo</div>
+          <div class="pr-cell center"><span class="chip chip-macro">Macro</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">4</span></div>
+          <div class="pr-cell name">C4 — Atualizar artigo 2FA: seção de perda do autenticador</div>
+          <div class="pr-cell center"><span class="chip chip-central">Central</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">5</span></div>
+          <div class="pr-cell name">B1 — Corrigir lógica de idioma do CAIO</div>
+          <div class="pr-cell center"><span class="chip chip-bot">Bot</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Urgente</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">6</span></div>
+          <div class="pr-cell name">C1 — Criar artigo: onde encontro o número HP?</div>
+          <div class="pr-cell center"><span class="chip chip-central">Central</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-curto">Curto prazo</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">7</span></div>
+          <div class="pr-cell name">C2 — Criar artigo: paguei e não consigo acessar</div>
+          <div class="pr-cell center"><span class="chip chip-central">Central</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-curto">Curto prazo</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">8</span></div>
+          <div class="pr-cell name">T1 — Protocolo: escalação após 2 orientações sem resolução</div>
+          <div class="pr-cell center"><span class="chip chip-triagem">Triagem</span></div>
+          <div class="pr-cell center"><span class="chip chip-alto">Alto</span></div>
+          <div class="pr-cell center"><span class="chip chip-curto">Curto prazo</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">9</span></div>
+          <div class="pr-cell name">T4 — Critério de escalação direta N2 para 2FA de Buyers</div>
+          <div class="pr-cell center"><span class="chip chip-triagem">Triagem</span></div>
+          <div class="pr-cell center"><span class="chip chip-medio">Médio</span></div>
+          <div class="pr-cell center"><span class="chip chip-curto">Curto prazo</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">10</span></div>
+          <div class="pr-cell name">M3 — Macro de cache com próximo passo embutido</div>
+          <div class="pr-cell center"><span class="chip chip-macro">Macro</span></div>
+          <div class="pr-cell center"><span class="chip chip-medio">Médio</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+        <div class="priority-row">
+          <div class="pr-cell"><span class="pr-num">11</span></div>
+          <div class="pr-cell name">B2 — Bot: não encerrar ticket sem confirmação de resolução</div>
+          <div class="pr-cell center"><span class="chip chip-bot">Bot</span></div>
+          <div class="pr-cell center"><span class="chip chip-medio">Médio</span></div>
+          <div class="pr-cell center"><span class="chip chip-curto">Curto prazo</span></div>
+        </div>
+        <div class="priority-row" style="border-bottom: none;">
+          <div class="pr-cell"><span class="pr-num">12</span></div>
+          <div class="pr-cell name">C5 — Atualizar artigo de bloqueio com passo a passo de desbloqueio</div>
+          <div class="pr-cell center"><span class="chip chip-central">Central</span></div>
+          <div class="pr-cell center"><span class="chip chip-medio">Médio</span></div>
+          <div class="pr-cell center"><span class="chip chip-imediato">Imediato</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTRICAS -->
+    <section class="section reveal" id="metricas">
+      <div class="section-head">
+        <h2 class="section-title">Métricas de acompanhamento</h2>
+      </div>
+      <p class="section-desc">Para medir o impacto das ações, esses são os indicadores a monitorar — por tema e por público.</p>
+
+      <div class="action-grid">
+        <div class="action-card">
+          <div class="ac-header"><span class="ac-num">Macros & Triagem</span></div>
+          <div class="ac-body">
+            <div class="ac-desc">
+              — Taxa de detratores Buyers (meta: reduzir de 48% para ~30%)<br><br>
+              — Média de interações por ticket (meta: reduzir de 5,0 para abaixo de 3,5)<br><br>
+              — % de tickets com 4+ mensagens do cliente sem resolução<br><br>
+              — % tickets com redirecionamento ao produtor onde o cliente retorna
+            </div>
+          </div>
+        </div>
+        <div class="action-card">
+          <div class="ac-header"><span class="ac-num">Bot</span></div>
+          <div class="ac-body">
+            <div class="ac-desc">
+              — CSAT médio em tickets com bot (baseline atual: 3,06 Buyers / 4,20 Creators)<br><br>
+              — Taxa de detratores em tickets resolvidos pelo bot<br><br>
+              — % de tickets fechados pelo bot que reabrem em menos de 48h<br><br>
+              — Erros de idioma reportados (zero tolerância)
+            </div>
+          </div>
+        </div>
+        <div class="action-card">
+          <div class="ac-header"><span class="ac-num">Central de Ajuda</span></div>
+          <div class="ac-body">
+            <div class="ac-desc">
+              — Views dos novos artigos (C1, C2, C3) por semana<br><br>
+              — % de tickets abertos que tinham artigo disponível e não foram deflexionados<br><br>
+              — Avaliação dos artigos (positivo/negativo) — especialmente 2FA e bloqueio<br><br>
+              — Volume de tickets sobre HP, acesso pós-pagamento e produtor sem resposta
+            </div>
+          </div>
+        </div>
+        <div class="action-card">
+          <div class="ac-header"><span class="ac-num">2FA (prioritário)</span></div>
+          <div class="ac-body">
+            <div class="ac-desc">
+              — Taxa de detratores em tickets de 2FA Buyers (baseline: 61,1% — meta: abaixo de 35%)<br><br>
+              — Volume de escalações N2 originadas de 2FA<br><br>
+              — % de tickets de 2FA resolvidos em 1 interação após implantação da nova macro
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-green" style="margin-top: 24px;">
+        <strong>Revisão recomendada:</strong> 30 dias após implantação de cada macro/protocolo, comparar CSAT médio e taxa de detratores no período equivalente anterior. As macros M1, M2 e M4 têm potencial de impacto mensurável já no primeiro ciclo de 30 dias.
+      </div>
+
+      <p style="margin-top: 32px; font-size: 11px; color: var(--light); text-align: center; border-top: 1px solid var(--border); padding-top: 20px;">
+        Plano de Ação CX · Access Friction · Q1 2026 · Adrielly Costa · eNotas
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<script>
+function toggleTemplate(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.tmpl-toggle');
+  body.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+function setActive(el) {
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.04 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navItems.forEach(n => n.classList.toggle('active', n.getAttribute('href') === '#' + cur));
+});
+</script>
+</body>
+</html>
